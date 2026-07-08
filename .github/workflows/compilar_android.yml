@@ -35,7 +35,7 @@ jobs:
 
     - name: Crear APK
       run: |
-        flet build apk main.py --no-analytics
+        flet build apk main.py
 
     - name: Guardar APK
       uses: actions/upload-artifact@v4
