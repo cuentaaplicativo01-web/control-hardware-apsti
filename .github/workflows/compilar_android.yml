@@ -10,34 +10,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clonar el código del repositorio
+    - name: Clonar el codigo
       uses: actions/checkout@v4
 
-    - name: Configurar Java JDK 17
+    - name: Configurar Java
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Configurar Flutter SDK
+    - name: Configurar Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.19.x'
+        flutter-version: '3.19.0'
 
     - name: Configurar Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
 
-    - name: Instalar Flet y dependencias
+    - name: Instalar Dependencias
       run: |
-        pip install -r requirements.txt
+        pip install flet==0.21.2 pyserial
 
-    - name: Crear paquete APK ejecutable
+    - name: Crear APK
       run: |
         flet build apk main.py --no-analytics
 
-    - name: Guardar el archivo APK generado
+    - name: Guardar APK
       uses: actions/upload-artifact@v4
       with:
         name: Tecnotronic-APSTI-App
